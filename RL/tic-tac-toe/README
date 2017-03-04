@@ -1,0 +1,68 @@
+
+MENACE - Matchbox Educable Noughts And Crosses Engine
+
+Python implementation by:
+Gabe Dulac-Arnold <gabe@squirrelsoup.net>
+Johannes H. Jensen <johannj@stud.ntnu.no>
+
+
+SETTING UP
+----------
+
+This Reinforcement Learning system consists of three parts:
+
+1. Environments (located in environments/)
+2. Agents (located in agents/)
+3. Experiment (experiment.py)
+
+There are multiple environments and agents available.
+
+The system uses the RL-Glue framework for communication
+between the different components.
+
+See http://glue.rl-community.org/ for details.
+
+
+EXPERIMENT SETTINGS
+-------------------
+
+Experiment and agent settings can be set by modifying 'settings.py'
+See this file for details on the various options available.
+
+
+RUNNING AN EXPERIMENT
+---------------------
+
+To run an experiment, four programs must be executed:
+
+1. RL-Glue needs to be started: execute `rl_glue'. The program will
+   exit when the experiment is finished, so I usually run the following
+   for multiple experiments:
+   
+   $ while true; do rl_glue ; done
+
+2. Start the desired environment from the environments/ folder:
+   
+   $ python first_free_environment.py
+
+3. Start the desired agent from the agents/ folder:
+   
+   $ python menace_agent.py
+
+2. After reviewing the settings (see above), start the experiment:
+
+   $ python experiment.py
+
+
+The experiment will run a number of episodes (games) and report the results.
+Because there is probability involved in the agent, the results will differ
+from run to run. Therefore the experiment will run the episodes multiple
+times (specified by the 'instances' setting) and calculate the average. 
+
+The experiment will save the results in the results/ folder in the form 
+of a .dat-file. It can be displayed graphically with gnuplot and the
+`plot.sh' script:
+
+   $ ./plot.sh first_free_2009-08-25_17\:41\:17.dat
+
+Plot settings can be modified in the 'plot.gnuplot' file.
